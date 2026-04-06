@@ -1,6 +1,6 @@
 {
-    "name": "urban_mind",
-    "short_name": "urban_mind",
+    "name": "urbanmind_app",
+    "short_name": "urbanmind_app",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

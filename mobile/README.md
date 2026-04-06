@@ -1,4 +1,4 @@
-# urban_mind
+# urbanmind_app
 
 A new Flutter project.
 

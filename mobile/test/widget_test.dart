@@ -1,30 +1,27 @@
 // This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:provider/provider.dart';
 
-import 'package:urban_mind/app.dart';
+import 'package:urbanmind_app/main.dart';
+import 'package:urbanmind_app/providers/auth_provider.dart';
+import 'package:urbanmind_app/providers/issue_provider.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
+  testWidgets('Smoke test to see if app launches', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const UrbanMindApp());
+    await tester.pumpWidget(
+      MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (_) => AuthProvider()),
+          ChangeNotifierProvider(create: (_) => IssueProvider()),
+        ],
+        child: const UrbanMindApp(),
+      ),
+    );
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
-
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
-
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    // Verify successful pump by checking if a Splash Screen element exists or just completing without throw
+    expect(find.byType(MaterialApp), findsOneWidget);
   });
 }
