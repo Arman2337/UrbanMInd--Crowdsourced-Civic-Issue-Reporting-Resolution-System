@@ -2,7 +2,7 @@ class AppConstants {
   // Use 10.0.2.2 for Android Emulator to connect to localhost.
   // Changed from 0.0.0.0 to your actual local Wi-Fi IP address
   // for testing on a physical device over the local network.
-  static const String baseUrl = 'http://10.123.216.165:5000/api';
+  static const String baseUrl = 'http://localhost:5000/api';
 
   static const String tokenKey = 'jwt_token';
   static const String userKey = 'user_data';
